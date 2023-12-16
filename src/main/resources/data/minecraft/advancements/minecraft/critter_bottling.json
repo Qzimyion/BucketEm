@@ -29,7 +29,7 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "Bottle up slimes snd magma cubes"
+      "translate": "Bottle up slimes and magma cubes"
     },
     "frame": "task",
     "hidden": false,
