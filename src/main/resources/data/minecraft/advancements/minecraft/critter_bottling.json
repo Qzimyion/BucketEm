@@ -1,0 +1,53 @@
+{
+  "parent": "minecraft:adventure/root",
+  "criteria": {
+    "got_magma_cube_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bucketem:magma_bottle"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_slime_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bucketem:slime_bottle"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "Bottle up slimes snd magma cubes"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "bucketem:slime_bottle"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "Slime Rancher"
+    }
+  },
+  "requirements": [
+    [
+      "got_slime_bottle"
+    ],
+    [
+      "got_magma_cube_bottle"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,38 @@
+{
+  "parent": "minecraft:nether/root",
+  "criteria": {
+    "got_strider_bucket": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bucketem:strider_bucket"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "Bucket up a strider using a lava bucket"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "bucketem:strider_bucket"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "Hardcore Bucketing"
+    }
+  },
+  "requirements": [
+    [
+      "got_strider_bucket"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

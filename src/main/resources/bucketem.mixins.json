@@ -1,0 +1,23 @@
+{
+  "required": true,
+  "package": "com.qzimyion.bucketem.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "EntityBucketItemAccessor",
+    "BlockEntityMixins.ChiseledBookshelfMixin",
+    "EntityMixins.BeeEntityMixin",
+    "EntityMixins.EndermiteEntityMixin",
+    "EntityMixins.GlowSquidEntityMixin",
+    "EntityMixins.SliverFishEntityMixin",
+    "EntityMixins.SquidEntityMixin",
+    "EntityMixins.StriderEntityMixin",
+    "EntityMixins.TurtleEntityMixin",
+    "EntityMixins.VexEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "RenderingMixins.LavaFogMixin"
+  ]
+}

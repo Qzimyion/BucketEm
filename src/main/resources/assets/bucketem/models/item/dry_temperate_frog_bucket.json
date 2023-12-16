@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "bucketem:item/dry_temperate_frog_bucket"
+  }
+}

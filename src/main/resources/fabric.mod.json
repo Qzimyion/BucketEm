@@ -1,0 +1,47 @@
+{
+	"schemaVersion": 1,
+	"id": "bucketem",
+	"version": "1.0.1",
+	"name": "Bucket Em",
+	"description": "A minecraft mob aiming towards making transporting certain mobs more convenient in both buckets and non bucket ways",
+	"authors": [
+		"Qzimyion"
+	],
+	"contact": {
+		"homepage": "*",
+		"sources": "https://github.com/Qzimyion/BucketEm"
+	},
+	"license": "MIT",
+	"icon": "assets/bucketem/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.qzimyion.bucketem.Bucketem"
+		],
+		"fabric-datagen": [
+			"com.qzimyion.bucketem.BucketemDataGenerator"
+		]
+	},
+	"accessWidener": "bucketem.accesswidener",
+	"mixins": [
+		"bucketem.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.0",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	},
+	"custom": {
+		"modmenu": {
+			"links": {
+				"modmenu.discord": "https://discord.com/invite/JcH4PBjJd4",
+				"modmenu.twitter": "https://twitter.com/Qzimyion",
+				"Tumblr": "https://qzimyion.tumblr.com/"
+			}
+		}
+	}
+}

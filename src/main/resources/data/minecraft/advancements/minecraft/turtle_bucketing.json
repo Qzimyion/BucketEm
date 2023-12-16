@@ -1,0 +1,38 @@
+{
+  "parent": "minecraft:adventure/root",
+  "criteria": {
+    "got_turtle_bucket": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bucketem:turtle_bucket"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "Bucket up a Turtle in a water bucket"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "bucketem:turtle_bucket"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "I like Turtles"
+    }
+  },
+  "requirements": [
+    [
+      "got_turtle_bucket"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

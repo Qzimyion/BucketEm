@@ -1,0 +1,98 @@
+{
+  "parent": "minecraft:minecraft/critter_bottling",
+  "criteria": {
+    "got_bee_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bucketem:bee_bottle"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_endermite_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bucketem:endermite_bottle"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_magma_cube_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bucketem:magma_bottle"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_silverfish_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bucketem:silverfish_bottle"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_slime_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bucketem:slime_bottle"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "Bottle up all the critters out there"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "bucketem:bee_bottle"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "Critter Rancher"
+    }
+  },
+  "requirements": [
+    [
+      "got_bee_bottle"
+    ],
+    [
+      "got_silverfish_bottle"
+    ],
+    [
+      "got_endermite_bottle"
+    ],
+    [
+      "got_slime_bottle"
+    ],
+    [
+      "got_magma_cube_bottle"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
