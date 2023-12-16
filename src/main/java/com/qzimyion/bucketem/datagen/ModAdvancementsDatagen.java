@@ -27,6 +27,7 @@ public class ModAdvancementsDatagen implements DataGeneratorEntrypoint {
 
     }
 
+    @SuppressWarnings("unused")
     public static class AdvancementsProvider extends FabricAdvancementProvider {
         public AdvancementsProvider(FabricDataOutput output) {
             super(output);
@@ -43,8 +44,8 @@ public class ModAdvancementsDatagen implements DataGeneratorEntrypoint {
                     .criterion("entered_nether", ChangedDimensionCriterion.Conditions.to(World.NETHER)).build(consumer, "nether/root");
 
             AdvancementEntry AdventureAdvancementEntry = Advancement.Builder.create().display(Items.MAP,
-                    (Text)Text.translatable("advancements.adventure.root.title"),
-                    (Text)Text.translatable("advancements.adventure.root.description"),
+                            Text.translatable("advancements.adventure.root.title"),
+                            Text.translatable("advancements.adventure.root.description"),
                     new Identifier("textures/gui/advancements/backgrounds/adventure.png"),
                     AdvancementFrame.TASK, false, false, false)
                     .criteriaMerger(AdvancementRequirements.CriterionMerger.OR).criterion("killed_something",
@@ -70,7 +71,7 @@ public class ModAdvancementsDatagen implements DataGeneratorEntrypoint {
                     .display(
                             SLIME_BOTTLE,
                             Text.translatable("Slime Rancher"),
-                            Text.translatable("Bottle up slimes snd magma cubes"),
+                            Text.translatable("Bottle up slimes and magma cubes"),
                             null,
                             AdvancementFrame.TASK,
                             true,

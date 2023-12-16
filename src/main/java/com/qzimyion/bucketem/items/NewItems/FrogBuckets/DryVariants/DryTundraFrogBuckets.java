@@ -28,7 +28,7 @@ public class DryTundraFrogBuckets extends SlimeBottle {
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
         World world = context.getWorld();
-        world.playSound(context.getPlayer(), context.getBlockPos(), SoundEvents.ITEM_BOTTLE_FILL_DRAGONBREATH, SoundCategory.BLOCKS, 1, 1);
+        world.playSound(context.getPlayer(), context.getBlockPos(), SoundEvents.ITEM_BUCKET_FILL_TADPOLE, SoundCategory.BLOCKS, 1, 1);
         if (world.isClient){
             return ActionResult.SUCCESS;
         } else {
@@ -44,7 +44,7 @@ public class DryTundraFrogBuckets extends SlimeBottle {
                 blockPos1 = blockPos.offset(direction);
             }
             if (!Objects.requireNonNull(context.getPlayer()).getAbilities().creativeMode) {
-                context.getPlayer().setStackInHand(context.getHand(), new ItemStack(Items.GLASS_BOTTLE));
+                context.getPlayer().setStackInHand(context.getHand(), new ItemStack(Items.BUCKET));
             }
             FrogEntity entity = EntityType.FROG.spawnFromItemStack((ServerWorld) world, itemStack, null, blockPos1, SpawnReason.BUCKET, true, false);
             if (entity != null) {
