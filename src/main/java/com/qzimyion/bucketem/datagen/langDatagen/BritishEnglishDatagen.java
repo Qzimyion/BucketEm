@@ -1,6 +1,5 @@
 package com.qzimyion.bucketem.datagen.langDatagen;
 
-import com.qzimyion.bucketem.items.ModItems;
 import com.qzimyion.bucketem.potions.StatusEffects.ModStatusEffectsRegistry;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -20,9 +19,9 @@ public class BritishEnglishDatagen extends FabricLanguageProvider {
         translationBuilder.add(TEMPERATE_FROG_BUCKET, "Bucket of Temperate Frog");
         translationBuilder.add(TROPICAL_FROG_BUCKET, "Bucket of Tropical Frog");
         translationBuilder.add(TUNDRA_FROG_BUCKET, "Bucket of Tundra Frog");
-        translationBuilder.add(DRY_TEMPERATE_FROG_BUCKET, "Bucket of Temperate Frog");
-        translationBuilder.add(DRY_TROPICAL_FROG_BUCKET, "Bucket of Tropical Frog");
-        translationBuilder.add(DRY_TUNDRA_FROG_BUCKET, "Bucket of Tundra Frog");
+        translationBuilder.add(DRY_TEMPERATE_FROG_BUCKET, "Dry Bucket of Temperate Frog");
+        translationBuilder.add(DRY_TROPICAL_FROG_BUCKET, "Dry Bucket of Tropical Frog");
+        translationBuilder.add(DRY_TUNDRA_FROG_BUCKET, "Dry Bucket of Tundra Frog");
         translationBuilder.add(TURTLE_BUCKET, "Bucket of Turtle");
         translationBuilder.add(ALLAY_POSSESSED_BOOK, "Allay Possessed Book");
         translationBuilder.add(VEX_POSSESSED_BOOK, "Vex Possessed Book");
