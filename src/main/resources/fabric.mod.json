@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "bucketem",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"name": "Bucket Em",
 	"description": "A minecraft mob aiming towards making transporting certain mobs more convenient in both buckets and non bucket ways",
 	"authors": [
