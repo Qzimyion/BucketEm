@@ -1,6 +1,5 @@
 package com.qzimyion.bucketem.potions.StatusEffects;
 
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 

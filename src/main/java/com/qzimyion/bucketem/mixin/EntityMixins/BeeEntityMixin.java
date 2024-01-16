@@ -58,7 +58,7 @@ public abstract class BeeEntityMixin extends AnimalEntity implements Bucketable 
     @Inject(at = @At("HEAD"), method = "readCustomDataFromNbt")
     public void readCustomDataFromNbt(NbtCompound nbt, CallbackInfo ci) {
         super.readCustomDataFromNbt(nbt);
-        this.setFromBucket(nbt.getBoolean("FromBucket"));
+        this.setFromBucket(nbt.getBoolean("FromBottle"));
     }
 
     @Override

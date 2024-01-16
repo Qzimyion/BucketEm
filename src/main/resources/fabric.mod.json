@@ -20,6 +20,9 @@
 		],
 		"fabric-datagen": [
 			"com.qzimyion.bucketem.BucketemDataGenerator"
+		],
+		"client": [
+			"com.qzimyion.bucketem.BucketemClient"
 		]
 	},
 	"accessWidener": "bucketem.accesswidener",
