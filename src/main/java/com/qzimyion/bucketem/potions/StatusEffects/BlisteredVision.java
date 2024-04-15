@@ -13,16 +13,6 @@ public class BlisteredVision extends StatusEffect {
     }
 
     @Override
-    public void onApplied(LivingEntity entity, int amplifier) {
-        EntityPose swimming = EntityPose.SWIMMING;
-        if (entity instanceof PlayerEntity){
-            if (entity.isInLava()) {
-                entity.setPose(swimming);
-            }
-        }
-    }
-
-    @Override
     public boolean canApplyUpdateEffect(int duration, int amplifier) {
         return true;
     }

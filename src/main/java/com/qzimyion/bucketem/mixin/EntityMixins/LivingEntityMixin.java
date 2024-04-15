@@ -2,6 +2,7 @@ package com.qzimyion.bucketem.mixin.EntityMixins;
 
 import com.qzimyion.bucketem.potions.StatusEffects.ModStatusEffectsRegistry;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
@@ -21,6 +22,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class LivingEntityMixin extends Entity {
     @Shadow public abstract boolean hasStatusEffect(StatusEffect effect);
 
+    @Shadow protected abstract boolean shouldSwimInFluids();
+
+    @Shadow public abstract boolean isInSwimmingPose();
+
     public LivingEntityMixin(EntityType<?> type, World world) {
         super(type, world);
     }
@@ -28,12 +33,12 @@ public abstract class LivingEntityMixin extends Entity {
     @Inject(method = "travel", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;hasNoGravity()Z"), slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;isInLava()Z"), to = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;isFallFlying()Z")))
     private void modifyLavaSpeed(Vec3d movementInput, CallbackInfo ci){
         if (this.hasStatusEffect(ModStatusEffectsRegistry.BLISTERED_VISION)){
-            this.setVelocity(bucketEm$LavaVelocity(movementInput, 0.14f, this.getYaw()));
+            this.setVelocity(movementInputToVelocity(movementInput, 0.21f, this.getYaw()));
         }
     }
 
     @Unique
-    private static Vec3d bucketEm$LavaVelocity(Vec3d movementInput, float speed, float yaw) {
+    private static Vec3d movementInputToVelocity(Vec3d movementInput, float speed, float yaw) {
         double d = movementInput.lengthSquared();
         if (d < 1.0E-7) {
             return Vec3d.ZERO;
