@@ -27,7 +27,7 @@ import static net.minecraft.item.Items.GLASS_BOTTLE;
 public class ModItems {
 
     //Buckets
-    public static final Item STRIDER_BUCKET = registerItem("strider_bucket", new EntityBucketItem(EntityType.STRIDER, Fluids.LAVA, SoundEvents.ITEM_BUCKET_EMPTY_LAVA, new FabricItemSettings().maxCount(1)));
+    public static final Item STRIDER_BUCKET = registerItem("strider_bucket", new EntityBucketItem(EntityType.STRIDER, Fluids.LAVA, SoundEvents.ITEM_BUCKET_EMPTY_LAVA, new Item.Settings().maxCount(1)));
     public static final Item SQUID_BUCKET = registerItem("squid_bucket", new EntityBucketItem(EntityType.SQUID, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, new FabricItemSettings().maxCount(1)));
     public static final Item GLOW_SQUID_BUCKET = registerItem("glow_squid_bucket", new EntityBucketItem(EntityType.GLOW_SQUID, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, new FabricItemSettings().maxCount(1)));
     public static final Item TEMPERATE_FROG_BUCKET = registerItem("temperate_frog_bucket", new TemperateFrogBuckets(Fluids.WATER ,new FabricItemSettings().maxCount(1)));
