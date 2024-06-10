@@ -8,6 +8,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.item.BucketItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -40,7 +41,7 @@ public class TemperateFrogBuckets extends BucketItem {
         FrogEntity entity = EntityType.FROG.spawnFromItemStack(world, stack, null, pos, SpawnReason.BUCKET, true, false);
         if (entity != null) {
             entity.setPersistent();
-            entity.setVariant(FrogVariant.TEMPERATE);
+            entity.setVariant((RegistryEntry<FrogVariant>) FrogVariant.TEMPERATE);
         }
     }
 }

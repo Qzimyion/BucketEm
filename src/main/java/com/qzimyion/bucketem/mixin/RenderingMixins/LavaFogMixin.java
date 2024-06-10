@@ -11,6 +11,7 @@ import net.minecraft.client.render.CameraSubmersionType;
 import net.minecraft.client.render.FogShape;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.registry.entry.RegistryEntry;
@@ -39,7 +40,7 @@ public class LavaFogMixin {
                 fogData.fogStart = -8.0f;
                 fogData.fogEnd = viewDistance * 0.5f;
             }
-            if (entity instanceof LivingEntity && ((LivingEntity)entity).hasStatusEffect(ModStatusEffectsRegistry.BLISTERED_VISION)) {
+            if (entity instanceof LivingEntity && ((LivingEntity)entity).hasStatusEffect((RegistryEntry<StatusEffect>) ModStatusEffectsRegistry.BLISTERED_VISION)) {
                 fogData.fogStart = 0.0f;
                 fogData.fogEnd = 60.0f;
             }

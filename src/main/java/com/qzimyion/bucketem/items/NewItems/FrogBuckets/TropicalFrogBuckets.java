@@ -9,6 +9,7 @@ import net.minecraft.fluid.Fluid;
 import net.minecraft.item.BucketItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -33,7 +34,7 @@ public class TropicalFrogBuckets extends BucketItem {
         FrogEntity entity = EntityType.FROG.spawnFromItemStack(world, stack, null, pos, SpawnReason.BUCKET, true, false);
         if (entity != null) {
             entity.setPersistent();
-            entity.setVariant(FrogVariant.WARM);
+            entity.setVariant((RegistryEntry<FrogVariant>) FrogVariant.WARM);
         }
     }
 }

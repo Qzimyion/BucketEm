@@ -2,7 +2,7 @@ accessWidener v1 named
 
 # Rendering
 accessible class net/minecraft/client/render/BackgroundRenderer$FogData
-accessible method net/minecraft/client/render/BackgroundRenderer$StatusEffectFogModifier getStatusEffect ()Lnet/minecraft/entity/effect/StatusEffect;
+#accessible method net/minecraft/client/render/BackgroundRenderer$StatusEffectFogModifier getStatusEffect ()Lnet/minecraft/entity/effect/StatusEffect;
 accessible class net/minecraft/client/render/BackgroundRenderer$StatusEffectFogModifier
 accessible method net/minecraft/client/render/BackgroundRenderer getFogModifier (Lnet/minecraft/entity/Entity;F)Lnet/minecraft/client/render/BackgroundRenderer$StatusEffectFogModifier;
 

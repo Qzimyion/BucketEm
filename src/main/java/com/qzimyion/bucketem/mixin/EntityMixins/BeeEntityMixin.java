@@ -45,8 +45,8 @@ public abstract class BeeEntityMixin extends AnimalEntity implements Bucketable 
 
 
     @Inject(at = @At("HEAD"), method = "initDataTracker")
-    public void initDataTracker(CallbackInfo ci){
-        this.dataTracker.startTracking(FROM_BOTTLE, false);
+    public void initDataTracker(DataTracker.Builder builder, CallbackInfo ci){
+        builder.add(FROM_BOTTLE, false);
     }
 
     @Inject(at = @At("HEAD"), method = "writeCustomDataToNbt")
@@ -97,11 +97,11 @@ public abstract class BeeEntityMixin extends AnimalEntity implements Bucketable 
     }
 
     @Override
-    public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
+    public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData) {
         if (spawnReason == SpawnReason.BUCKET) {
             return entityData;
         }
-        return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
+        return super.initialize(world, difficulty, spawnReason, entityData);
     }
 
     @Override

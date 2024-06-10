@@ -22,7 +22,7 @@ public class ChiseledBookshelfMixin {
 
     //Please add a tag for Enchanted books Mojang
 
-    @Inject(at = @At("RETURN"), method = "tryAddBook")
+    @Inject(at = @At("HEAD"), method = "tryAddBook")
     private static void tryAddBook(World world, BlockPos pos, PlayerEntity player, ChiseledBookshelfBlockEntity blockEntity, ItemStack stack, int slot, CallbackInfo ci){
         SoundEvent soundEvents = stack.isOf(ModItems.ALLAY_POSSESSED_BOOK) ? SoundEvents.ENTITY_ALLAY_AMBIENT_WITHOUT_ITEM : SoundEvents.ENTITY_ALLAY_AMBIENT_WITH_ITEM;
         SoundEvent soundEvents1 = stack.isOf(ModItems.VEX_POSSESSED_BOOK) ? SoundEvents.ENTITY_VEX_AMBIENT : SoundEvents.ENTITY_VEX_HURT;

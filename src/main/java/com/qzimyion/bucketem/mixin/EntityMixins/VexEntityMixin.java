@@ -43,8 +43,8 @@ public abstract class VexEntityMixin extends HostileEntity implements Bucketable
     private static final TrackedData<Boolean> FROM_BOOK = DataTracker.registerData(VexEntityMixin.class, TrackedDataHandlerRegistry.BOOLEAN);
 
     @Inject(at = @At("HEAD"), method = "initDataTracker")
-    public void initDataTracker(CallbackInfo ci){
-        this.dataTracker.startTracking(FROM_BOOK, false);
+    public void initDataTracker(DataTracker.Builder builder, CallbackInfo ci){
+        builder.add(FROM_BOOK, false);
     }
 
     @Inject(at = @At("HEAD"), method = "writeCustomDataToNbt")

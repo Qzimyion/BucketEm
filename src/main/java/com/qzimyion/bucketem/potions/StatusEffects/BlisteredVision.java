@@ -1,10 +1,7 @@
 package com.qzimyion.bucketem.potions.StatusEffects;
 
-import net.minecraft.entity.EntityPose;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
-import net.minecraft.entity.player.PlayerEntity;
 
 public class BlisteredVision extends StatusEffect {
 

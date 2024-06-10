@@ -3,6 +3,7 @@ package com.qzimyion.bucketem;
 import com.qzimyion.bucketem.dispenser.DispenserBehaviorRegistry;
 import com.qzimyion.bucketem.items.ModItemGroups;
 import com.qzimyion.bucketem.items.ModItems;
+import com.qzimyion.bucketem.potions.ModPotionRecipeRegistry;
 import com.qzimyion.bucketem.potions.ModPotionsRegistry;
 import com.qzimyion.bucketem.potions.StatusEffects.ModStatusEffectsRegistry;
 import net.fabricmc.api.ModInitializer;
@@ -23,6 +24,6 @@ public class Bucketem implements ModInitializer {
 		DispenserBehaviorRegistry.registerDispenserBehavior();
 		ModStatusEffectsRegistry.registerStatusEffects();
 		ModPotionsRegistry.registerPotions();
-		ModPotionsRegistry.registerPotionRecipes();
+		ModPotionRecipeRegistry.registerPotionRecipes();
 	}
 }

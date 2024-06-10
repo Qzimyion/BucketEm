@@ -33,9 +33,9 @@ public abstract class SquidEntityMixin extends WaterCreatureEntity implements Bu
     }
 
     @Override
-    protected void initDataTracker() {
-        super.initDataTracker();
-        this.dataTracker.startTracking(FROM_BUCKET, false);
+    protected void initDataTracker(DataTracker.Builder builder) {
+        super.initDataTracker(builder);
+        builder.add(FROM_BUCKET, false);
     }
 
     @Override

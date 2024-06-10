@@ -2,6 +2,8 @@ package com.qzimyion.bucketem;
 
 import com.qzimyion.bucketem.items.ModItems;
 import net.fabricmc.fabric.api.event.player.UseEntityCallback;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.NbtComponent;
 import net.minecraft.entity.Bucketable;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.mob.SlimeEntity;
@@ -13,7 +15,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsage;
 import net.minecraft.item.Items;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.ActionResult;
@@ -104,15 +105,16 @@ public class ModEvents {
                 if (bottle != null)
                 {
                     ItemStack bottleItem = new ItemStack(bottle);
-                    NbtCompound nbt = bottleItem.getOrCreateNbt();
-                    nbt.putBoolean("HasNectar", bee.hasNectar());
-                    nbt.putBoolean("HasStung", bee.hasStung());
-                    nbt.putInt("Anger", bee.getAngerTime());
-                    nbt.putInt("Age", bee.getBreedingAge());
-                    nbt.putFloat("Health", bee.getHealth());
-                    if (bee.getAngryAt() != null)
-                        nbt.putUuid("AngryAt", bee.getAngryAt());
-
+                    NbtComponent.set(DataComponentTypes.BUCKET_ENTITY_DATA, bottleItem, nbt ->
+                    {
+                        nbt.putBoolean("HasNectar", bee.hasNectar());
+                        nbt.putBoolean("HasStung", bee.hasStung());
+                        nbt.putInt("Anger", bee.getAngerTime());
+                        nbt.putInt("Age", bee.getBreedingAge());
+                        nbt.putFloat("Health", bee.getHealth());
+                        if (bee.getAngryAt() != null)
+                            nbt.putUuid("AngryAt", bee.getAngryAt());
+                    });
                     itemStack.decrement(1);
                     player.incrementStat(Stats.USED.getOrCreateStat(itemStack.getItem()));
                     entity.discard();

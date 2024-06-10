@@ -1,6 +1,6 @@
 package com.qzimyion.bucketem.items.NewItems.FrogBuckets.DryVariants;
 
-import com.qzimyion.bucketem.items.NewItems.Bottles.SlimeBottle;
+import com.qzimyion.bucketem.items.NewItems.Bottles.EntityBottle;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
@@ -9,6 +9,7 @@ import net.minecraft.entity.passive.FrogVariant;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.item.Items;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -19,7 +20,7 @@ import net.minecraft.world.World;
 
 import java.util.Objects;
 
-public class DryTropicalFrogBuckets extends SlimeBottle {
+public class DryTropicalFrogBuckets extends DryTemperateFrogBuckets {
 
     public DryTropicalFrogBuckets(Settings settings) {
         super(settings);
@@ -49,7 +50,7 @@ public class DryTropicalFrogBuckets extends SlimeBottle {
             FrogEntity entity = EntityType.FROG.spawnFromItemStack((ServerWorld) world, itemStack, null, blockPos1, SpawnReason.BUCKET, true, false);
             if (entity != null) {
                 entity.setPersistent();
-                entity.setVariant(FrogVariant.WARM);
+                entity.setVariant((RegistryEntry<FrogVariant>) FrogVariant.WARM);
             }
         }
         return ActionResult.CONSUME;

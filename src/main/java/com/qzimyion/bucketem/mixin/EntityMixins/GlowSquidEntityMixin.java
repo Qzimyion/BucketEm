@@ -36,8 +36,8 @@ public abstract class GlowSquidEntityMixin extends WaterCreatureEntity implement
     }
 
     @Inject(at = @At("HEAD"), method = "initDataTracker")
-    public void initDataTracker(CallbackInfo ci){
-        this.dataTracker.startTracking(FROM_BUCKET, false);
+    public void initDataTracker(DataTracker.Builder builder, CallbackInfo ci){
+        builder.add(FROM_BUCKET, false);
     }
 
     @Inject(at = @At("HEAD"), method = "writeCustomDataToNbt")

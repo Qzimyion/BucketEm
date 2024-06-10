@@ -40,9 +40,9 @@ public abstract class SliverFishEntityMixin extends HostileEntity implements Buc
     }
 
     @Override
-    protected void initDataTracker() {
-        super.initDataTracker();
-        this.dataTracker.startTracking(FROM_BOTTLE, false);
+    protected void initDataTracker(DataTracker.Builder builder) {
+        super.initDataTracker(builder);
+        builder.add(FROM_BOTTLE, false);
     }
 
     @Override

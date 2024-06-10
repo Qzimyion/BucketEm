@@ -1,6 +1,8 @@
 package com.qzimyion.bucketem.mixin.EntityMixins;
 
 import com.qzimyion.bucketem.items.ModItems;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.NbtComponent;
 import net.minecraft.entity.Bucketable;
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;
@@ -45,8 +47,8 @@ public abstract class TurtleEntityMixin extends AnimalEntity implements Bucketab
     private static final TrackedData<Boolean> FROM_BUCKET = DataTracker.registerData(TurtleEntityMixin.class, TrackedDataHandlerRegistry.BOOLEAN);
 
     @Inject(at = @At("HEAD"), method = "initDataTracker")
-    public void initDataTracker(CallbackInfo ci){
-        this.dataTracker.startTracking(FROM_BUCKET, false);
+    public void initDataTracker(DataTracker.Builder builder, CallbackInfo ci){
+        builder.add(FROM_BUCKET, false);
     }
 
     @Inject(at = @At("HEAD"), method = "writeCustomDataToNbt")
@@ -84,9 +86,11 @@ public abstract class TurtleEntityMixin extends AnimalEntity implements Bucketab
     @Override
     public void copyDataToStack(ItemStack stack) {
         Bucketable.copyDataToStack(this, stack);
-        NbtCompound nbtCompound = stack.getOrCreateNbt();
-        nbtCompound.putInt("Age", this.getBreedingAge());
-        nbtCompound.putBoolean("HasEgg", this.hasEgg());
+        NbtComponent.set(DataComponentTypes.BUCKET_ENTITY_DATA, stack, nbt ->
+        {
+            nbt.putInt("Age", this.getBreedingAge());
+            nbt.putBoolean("HasEgg", this.hasEgg());
+        });
     }
 
     @Override
@@ -101,7 +105,7 @@ public abstract class TurtleEntityMixin extends AnimalEntity implements Bucketab
     }
 
     @Inject(at = @At("HEAD"), method = "initialize", cancellable = true)
-    public void initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, EntityData entityData, NbtCompound entityNbt, CallbackInfoReturnable<EntityData> cir) {
+    public void initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, EntityData entityData, CallbackInfoReturnable<EntityData> cir) {
         if (spawnReason == SpawnReason.BUCKET) {
             cir.setReturnValue(entityData);
         }

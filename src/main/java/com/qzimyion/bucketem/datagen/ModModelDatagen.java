@@ -1,6 +1,5 @@
 package com.qzimyion.bucketem.datagen;
 
-import com.qzimyion.bucketem.items.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.data.client.BlockStateModelGenerator;
