@@ -1,38 +1,22 @@
 {
+  "display": {
+    "icon": {
+      "id": "bucketem:strider_bucket"
+    },
+    "title": "Hardcore Bucketing",
+    "description": "Scoop up a Strider or a Baby Strider with a lava bucket"
+  },
   "parent": "minecraft:nether/root",
   "criteria": {
-    "got_strider_bucket": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": [
-              "bucketem:strider_bucket"
-            ]
+            "items": "bucketem:strider_bucket"
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     }
-  },
-  "display": {
-    "announce_to_chat": true,
-    "description": {
-      "translate": "Bucket up a strider using a lava bucket"
-    },
-    "frame": "task",
-    "hidden": false,
-    "icon": {
-      "item": "bucketem:strider_bucket"
-    },
-    "show_toast": true,
-    "title": {
-      "translate": "Hardcore Bucketing"
-    }
-  },
-  "requirements": [
-    [
-      "got_strider_bucket"
-    ]
-  ],
-  "sends_telemetry_event": true
+  }
 }

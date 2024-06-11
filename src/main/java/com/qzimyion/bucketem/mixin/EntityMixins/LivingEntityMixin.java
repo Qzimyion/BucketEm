@@ -1,33 +1,42 @@
 package com.qzimyion.bucketem.mixin.EntityMixins;
 
 import com.qzimyion.bucketem.potions.StatusEffects.ModStatusEffectsRegistry;
+import net.minecraft.client.render.Camera;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.MovementType;
 import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Slice;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @SuppressWarnings("SameParameterValue")
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {
-    @Unique
-    public abstract boolean hasStatusEffect(StatusEffect effect);
+    //TODO: Add a better way of making the player swim in the lava faster alongside making them be in the swimming position with a new effect if possible
 
-    @Shadow protected abstract boolean shouldSwimInFluids();
 
     @Shadow public abstract boolean isInSwimmingPose();
+
+    @Shadow public abstract boolean hasStatusEffect(RegistryEntry<StatusEffect> effect);
 
     public LivingEntityMixin(EntityType<?> type, World world) {
         super(type, world);
     }
 
-    @Unique
+    /*
+    @Inject(method = "travel", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;setVelocity(Lnet/minecraft/util/math/Vec3d;)V"), slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;isInLava()Z"), to = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;isFallFlying()Z")))
     private void modifyLavaSpeed(Vec3d movementInput, CallbackInfo ci){
         if (this.hasStatusEffect(ModStatusEffectsRegistry.BLISTERED_VISION)){
             this.setVelocity(movementInputToVelocity(movementInput, 0.21f, this.getYaw()));
@@ -45,4 +54,6 @@ public abstract class LivingEntityMixin extends Entity {
         float g = MathHelper.cos(yaw * ((float)Math.PI / 180));
         return new Vec3d(vec3d.x * (double)g - vec3d.z * (double)f, vec3d.y, vec3d.z * (double)g + vec3d.x * (double)f);
     }
+
+     */
 }

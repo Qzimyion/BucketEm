@@ -16,6 +16,7 @@ public class Bucketem implements ModInitializer {
 	public static final String MOD_ID = "bucketem";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
+
 	@Override
 	public void onInitialize() {
 		ModItems.registerItems();
@@ -25,5 +26,7 @@ public class Bucketem implements ModInitializer {
 		ModStatusEffectsRegistry.registerStatusEffects();
 		ModPotionsRegistry.registerPotions();
 		ModPotionRecipeRegistry.registerPotionRecipes();
+
+		//Config
 	}
 }

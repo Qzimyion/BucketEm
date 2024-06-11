@@ -70,9 +70,9 @@ public class ModEvents {
 
             //Bottles
             if (itemStack.getItem() == Items.GLASS_BOTTLE && entity.isAlive() && entity instanceof SlimeEntity slime) {
-                player.playSound(SoundEvents.ITEM_BOTTLE_FILL_DRAGONBREATH, 1.0f, 1.0f);
                 ItemStack bottle;
                 if (slime.getType() == EntityType.SLIME && slime.getSize() == 1) {
+                    player.playSound(SoundEvents.ITEM_BOTTLE_FILL_DRAGONBREATH, 1.0f, 1.0f);
                     bottle = new ItemStack(ModItems.SLIME_BOTTLE);
                 } else if (slime.getType() == EntityType.SLIME && slime.getSize() == 2) {
                     return ActionResult.FAIL;
@@ -81,6 +81,7 @@ public class ModEvents {
                 } else if (slime.getType() == EntityType.SLIME && slime.getSize() == 4) {
                     return ActionResult.FAIL;
                 } else if (slime.getType() == EntityType.MAGMA_CUBE && slime.getSize() == 1) {
+                    player.playSound(SoundEvents.ITEM_BOTTLE_FILL_DRAGONBREATH, 1.0f, 1.0f);
                     bottle = new ItemStack(ModItems.MAGMA_CUBE_BOTTLE);
                 } else if (slime.getType() == EntityType.MAGMA_CUBE && slime.getSize() == 2) {
                     return ActionResult.FAIL;
