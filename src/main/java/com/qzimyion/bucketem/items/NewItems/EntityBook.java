@@ -8,6 +8,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.passive.AllayEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
@@ -65,8 +66,6 @@ public class EntityBook extends Item {
             } else {
                 blockPos1 = blockPos.offset(direction);
             }
-
-
             if (!Objects.requireNonNull(context.getPlayer()).getAbilities().creativeMode){
                 context.getPlayer().setStackInHand(context.getHand(), new ItemStack(Items.BOOK));
             }
@@ -76,17 +75,12 @@ public class EntityBook extends Item {
             if (entity instanceof MobEntity){
                 ((MobEntity) entity).setPersistent();
             }
+            NbtComponent.set(DataComponentTypes.BUCKET_ENTITY_DATA, itemStack, nbt ->{
+                if (entity instanceof AllayEntity){
+
+                }
+            });
             return ActionResult.CONSUME;
         }
-    }
-
-    public EntityType<?> getType(NbtCompound nbt) {
-        if (nbt != null && nbt.contains("EntityTag", 10)){
-            NbtCompound nbtCompound = nbt.getCompound("EntityTag");
-            if (nbtCompound.contains("id", 8)){
-                return EntityType.get(nbtCompound.getString("id")).orElse(this.getType);
-            }
-        }
-        return this.getType;
     }
 }

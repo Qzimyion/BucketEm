@@ -102,14 +102,4 @@ public class EntityBottle extends Item {
             return ActionResult.CONSUME;
         }
     }
-
-    public EntityType<?> getType(NbtCompound nbt) {
-        if (nbt != null && nbt.contains("EntityTag", 10)){
-            NbtCompound nbtCompound = nbt.getCompound("EntityTag");
-            if (nbtCompound.contains("id", 8)){
-                return EntityType.get(nbtCompound.getString("id")).orElse(this.getType);
-            }
-        }
-        return this.getType;
-    }
 }
