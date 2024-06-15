@@ -11,16 +11,34 @@ import net.minecraft.entity.passive.AllayEntity;
 import net.minecraft.entity.passive.BeeEntity;
 import net.minecraft.entity.passive.FrogEntity;
 import net.minecraft.entity.passive.FrogVariant;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUsage;
-import net.minecraft.item.Items;
+import net.minecraft.entity.projectile.BreezeWindChargeEntity;
+import net.minecraft.item.*;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.ActionResult;
 
+import static net.minecraft.item.Items.*;
+
 @SuppressWarnings("deprecation")
 public class ModEvents {
+
+    public static void copyDataToStackCustom(BreezeWindChargeEntity entity, ItemStack stack){
+        stack.set(DataComponentTypes.CUSTOM_NAME, entity.getCustomName());
+        NbtComponent.set(DataComponentTypes.BUCKET_ENTITY_DATA, stack, nbtCompound -> {
+            if (entity.isSilent()) {
+                nbtCompound.putBoolean("Silent", entity.isSilent());
+            }
+            if (entity.hasNoGravity()) {
+                nbtCompound.putBoolean("NoGravity", entity.hasNoGravity());
+            }
+            if (entity.isGlowingLocal()) {
+                nbtCompound.putBoolean("Glowing", entity.isGlowingLocal());
+            }
+            if (entity.isInvulnerable()) {
+                nbtCompound.putBoolean("Invulnerable", entity.isInvulnerable());
+            }
+        });
+    }
 
     public static void registerEvents() {
 
@@ -28,7 +46,7 @@ public class ModEvents {
             ItemStack itemStack = player.getStackInHand(hand);
 
             //Frog buckets
-            if (itemStack.getItem() == Items.WATER_BUCKET && entity.isAlive() && entity instanceof FrogEntity frog){
+            if (itemStack.getItem() == WATER_BUCKET && entity.isAlive() && entity instanceof FrogEntity frog){
                 player.playSound(SoundEvents.ITEM_BUCKET_FILL_FISH, 1.0f, 1.0f);
                 ItemStack bucket;
                 if (frog.getVariant()== FrogVariant.TEMPERATE){
@@ -47,7 +65,7 @@ public class ModEvents {
                 entity.discard();
             }
             //Dry variant
-            if (itemStack.getItem() == Items.BUCKET && entity.isAlive() && entity instanceof FrogEntity frog){
+            if (itemStack.getItem() == BUCKET && entity.isAlive() && entity instanceof FrogEntity frog){
                 player.playSound(SoundEvents.ITEM_BUCKET_FILL_FISH, 1.0f, 1.0f);
                 ItemStack bucket;
                 if (frog.getVariant()== FrogVariant.TEMPERATE){
@@ -66,10 +84,8 @@ public class ModEvents {
                 entity.discard();
             }
 
-            //Turtles
-
             //Bottles
-            if (itemStack.getItem() == Items.GLASS_BOTTLE && entity.isAlive() && entity instanceof SlimeEntity slime) {
+            if (itemStack.getItem() == GLASS_BOTTLE && entity.isAlive() && entity instanceof SlimeEntity slime) {
                 ItemStack bottle;
                 if (slime.getType() == EntityType.SLIME && slime.getSize() == 1) {
                     player.playSound(SoundEvents.ITEM_BOTTLE_FILL_DRAGONBREATH, 1.0f, 1.0f);
@@ -100,7 +116,7 @@ public class ModEvents {
             }
 
             //Bee
-            if (itemStack.getItem() == Items.GLASS_BOTTLE && entity.isAlive() && entity instanceof BeeEntity bee){
+            if (itemStack.getItem() == GLASS_BOTTLE && entity.isAlive() && entity instanceof BeeEntity bee){
                 player.playSound(SoundEvents.ITEM_BOTTLE_FILL_DRAGONBREATH, 1.0f, 1.0f);
                 Item bottle = ModItems.BEE_BOTTLE;
                 if (bottle != null)
@@ -127,7 +143,7 @@ public class ModEvents {
             }
 
             //Allay
-            if (itemStack.getItem() == Items.BOOK && player.isSneaking() && entity.isAlive() && entity instanceof AllayEntity allay){
+            if (itemStack.getItem() == BOOK && player.isSneaking() && entity.isAlive() && entity instanceof AllayEntity allay){
                 player.playSound(SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, 1.0f, 1.0f);
                 ItemStack newStack = ModItems.ALLAY_POSSESSED_BOOK.getDefaultStack();
                 Bucketable.copyDataToStack(allay, newStack);
@@ -138,9 +154,22 @@ public class ModEvents {
                 return ActionResult.SUCCESS;
 
             }
+
+            //Breeze wind change capturing
+            if (itemStack.getItem() == GLASS_BOTTLE && entity instanceof BreezeWindChargeEntity windCharge){
+                player.playSound(SoundEvents.ITEM_BOTTLE_FILL_DRAGONBREATH, 3.0f, 4.5f);
+                ItemStack newStack = ModItems.WING_GUST_BOTTLE.getDefaultStack();
+                copyDataToStackCustom(windCharge, newStack);
+                ItemStack itemStack1 = ItemUsage.exchangeStack(itemStack, player, newStack, false);
+                player.setStackInHand(hand, itemStack1);
+                entity.discard();
+                return ActionResult.SUCCESS;
+            }
+
             return ActionResult.PASS;
 
         }));
+
         Bucketem.LOGGER.info("Registering mod Events");
     }
 }

@@ -47,7 +47,6 @@ public class ModItems {
     public static final Item SLIME_BOTTLE = registerItem("slime_bottle", new EntityBottle(EntityType.SLIME ,new Item.Settings().maxCount(1).recipeRemainder(GLASS_BOTTLE)));
     public static final Item MAGMA_CUBE_BOTTLE = registerItem("magma_bottle", new EntityBottle(EntityType.MAGMA_CUBE ,new Item.Settings().maxCount(1).recipeRemainder(GLASS_BOTTLE)));
 
-
     private static Item registerItem(String name, Item item)
     {
         return Registry.register(Registries.ITEM, new Identifier(Bucketem.MOD_ID, name), item);

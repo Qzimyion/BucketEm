@@ -8,6 +8,11 @@ import com.qzimyion.bucketem.potions.ModPotionsRegistry;
 import com.qzimyion.bucketem.potions.StatusEffects.ModStatusEffectsRegistry;
 import net.fabricmc.api.ModInitializer;
 
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,6 +20,7 @@ public class Bucketem implements ModInitializer {
 
 	public static final String MOD_ID = "bucketem";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+
 
 
 	@Override
@@ -26,7 +32,5 @@ public class Bucketem implements ModInitializer {
 		ModStatusEffectsRegistry.registerStatusEffects();
 		ModPotionsRegistry.registerPotions();
 		ModPotionRecipeRegistry.registerPotionRecipes();
-
-		//Config
 	}
 }

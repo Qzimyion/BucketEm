@@ -6,7 +6,7 @@
     "title": "Hardcore Bucketing",
     "description": "Scoop up a Strider or a Baby Strider with a lava bucket"
   },
-  "parent": "minecraft:nether/root",
+  "parent": "minecraft:nether/ride_strider",
   "criteria": {
     "requirement": {
       "trigger": "minecraft:inventory_changed",

@@ -9,6 +9,8 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 
+import static net.minecraft.util.Identifier.ofVanilla;
+
 public class ModPotionsRegistry {
 
     public static final RegistryEntry<Potion> BLISTERED_VISION_SHORT =
@@ -20,7 +22,7 @@ public class ModPotionsRegistry {
                     (ModStatusEffectsRegistry.BLISTERED_VISION, 9600, 0)));
 
     private static RegistryEntry<Potion> registerPotions(String name, Potion potion) {
-        return Registry.registerReference(Registries.POTION, new Identifier(name), potion);
+        return Registry.registerReference(Registries.POTION, new Identifier(name, name), potion);
     }
 
     public static void registerPotions(){

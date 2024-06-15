@@ -13,7 +13,7 @@ public class ModStatusEffectsRegistry {
     public static final RegistryEntry<StatusEffect> BLISTERED_VISION = ModStatusEffectsRegistry.register("blistered_vision", new BlisteredVision());
 
     private static RegistryEntry<StatusEffect> register(String id, StatusEffect statusEffect) {
-        return Registry.registerReference(Registries.STATUS_EFFECT, new Identifier(Bucketem.MOD_ID), statusEffect);
+        return Registry.registerReference(Registries.STATUS_EFFECT, new Identifier(Bucketem.MOD_ID, id), statusEffect);
     }
 
      /*
