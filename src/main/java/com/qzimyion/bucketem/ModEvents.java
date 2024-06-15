@@ -11,7 +11,6 @@ import net.minecraft.entity.passive.AllayEntity;
 import net.minecraft.entity.passive.BeeEntity;
 import net.minecraft.entity.passive.FrogEntity;
 import net.minecraft.entity.passive.FrogVariant;
-import net.minecraft.entity.projectile.BreezeWindChargeEntity;
 import net.minecraft.item.*;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
@@ -21,24 +20,6 @@ import static net.minecraft.item.Items.*;
 
 @SuppressWarnings("deprecation")
 public class ModEvents {
-
-    public static void copyDataToStackCustom(BreezeWindChargeEntity entity, ItemStack stack){
-        stack.set(DataComponentTypes.CUSTOM_NAME, entity.getCustomName());
-        NbtComponent.set(DataComponentTypes.BUCKET_ENTITY_DATA, stack, nbtCompound -> {
-            if (entity.isSilent()) {
-                nbtCompound.putBoolean("Silent", entity.isSilent());
-            }
-            if (entity.hasNoGravity()) {
-                nbtCompound.putBoolean("NoGravity", entity.hasNoGravity());
-            }
-            if (entity.isGlowingLocal()) {
-                nbtCompound.putBoolean("Glowing", entity.isGlowingLocal());
-            }
-            if (entity.isInvulnerable()) {
-                nbtCompound.putBoolean("Invulnerable", entity.isInvulnerable());
-            }
-        });
-    }
 
     public static void registerEvents() {
 
@@ -153,17 +134,6 @@ public class ModEvents {
                 entity.discard();
                 return ActionResult.SUCCESS;
 
-            }
-
-            //Breeze wind change capturing
-            if (itemStack.getItem() == GLASS_BOTTLE && entity instanceof BreezeWindChargeEntity windCharge){
-                player.playSound(SoundEvents.ITEM_BOTTLE_FILL_DRAGONBREATH, 3.0f, 4.5f);
-                ItemStack newStack = ModItems.WING_GUST_BOTTLE.getDefaultStack();
-                copyDataToStackCustom(windCharge, newStack);
-                ItemStack itemStack1 = ItemUsage.exchangeStack(itemStack, player, newStack, false);
-                player.setStackInHand(hand, itemStack1);
-                entity.discard();
-                return ActionResult.SUCCESS;
             }
 
             return ActionResult.PASS;
